@@ -4,9 +4,19 @@
 
 ## 현재 단계
 
-초기 문서와 빈 Unity 프로젝트 구축 완료. 첫 시제품 이동·충돌·3인칭 카메라 코드와 전용 씬 준비. Unity 컴파일·실행 검증 대기.
+Mac 첫 이동 시제품 정상 작동 사용자 보고 및 PR #5 병합 완료. iPhone 터치 조작과 실기기 빌드 준비 기능 작성, 컴파일·iOS 실행 검증 대기.
 
 ## 최신 인계
+
+- PR #5가 main에 병합된 것을 확인했다. Mac 정상 작동은 사용자 보고이며 테스트 4개 전체 통과를 뜻하지 않는다.
+- iPhone을 첫 테스트 기기로 선택했다. Xcode·iOS Build Support 설치 완료는 사용자 보고다.
+- 작업 브랜치: `feature/iphone-touch-controls`. 조이스틱·드래그·동시 입력·안전 영역, 취소·앱 전환 초기화, Mac 마우스 모사 추가.
+- 새 터치 상태 테스트 12개 사례와 iPhone 빌드 준비 메뉴, 재질 리소스·런타임 컴포넌트 보존 설정을 추가했다.
+- [IPHONE](IPHONE.md)에 Mac 검증·빌드·Xcode 서명·실기기 실행 절차를 기록했다. Unity·Xcode·iPhone 실행은 이 환경에서 검증하지 못했다.
+- 기존 씬·패키지와 저장소의 ProjectSettings는 보존한다. 새 메뉴를 Mac에서 실행하면 로컬 ProjectSettings가 바뀌므로 검토·기록이 필요하다.
+- 이번 기능은 별도 PR에서 사용자 검토·병합한다. main에 직접 반영하지 않는다.
+
+## 이전 인계: Mac 시제품 구현 당시
 
 - [PR #2](https://github.com/mca-kor/mobile-mmorpg/pull/2) 병합을 GitHub에서 확인함. 병합 커밋: `db6ba5c8076cac27dd581eca386660422b55e5f0`.
 - Unity 6.3 LTS `6000.3.27f1`, Universal 3D(URP), 경로 `MobileMMORPG/`.
@@ -43,6 +53,15 @@
 
 ## 검증 기록
 
+2026-10-28 iPhone 조작 확장의 클라우드 검사:
+
+- 변경 파일 25개, 신규 .meta GUID 9개 중복 없음, 신규 자산·폴더와 메타데이터 대응 확인
+- 재질 YAML·URP Lit 참조와 link.xml 구문, Editor 전용 asmdef·문서 링크·공백·소스 괄호 검사 통과
+- 씬 파일·Packages·ProjectSettings를 제출 변경에 포함하지 않음을 확인
+- 터치 상태 테스트 12개 사례 추가. 기존 PlayMode 4개를 포함한 테스트는 실행하지 못함
+- Unity 컴파일·API 호환성·Xcode 빌드·iPhone 실행·안전 영역·실제 동시 터치는 미검증
+- 첫 Mac 시제품 정상 작동은 사용자 보고이며 이번 터치 확장의 통과 결과가 아님
+
 2026-10-28 첫 구현의 클라우드 정적 검사:
 
 - 변경 파일 24개, 새 .meta의 GUID 12개 중복 없음
@@ -64,10 +83,10 @@
 
 ## 다음 작업
 
-1. Mac에서 `feature/third-person-prototype` 브랜치를 받아 PLAYTEST에 따라 컴파일·PlayMode 테스트·수동 조작을 확인한다.
-2. 결과와 오류를 PR에 기록하고 필요한 수정을 진행한다. 확인 후 사용자 검토·병합한다.
-3. Windows 또는 모바일에서 최신 STATUS를 읽어 인계를 확인한다.
-4. Mac 기본 동작 검증 이후 모바일 입력과 Android·iOS 우선순위를 정한다.
+1. Mac에서 `feature/iphone-touch-controls`를 받아 IPHONE의 Editor 검사와 PlayMode 테스트를 실행한다.
+2. 빌드 준비 메뉴를 실행하고 Unity → Xcode → iPhone으로 빌드·서명·설치한다.
+3. 두 손가락 입력·회전·앱 전환·재질과 오류를 확인하고 기기·OS·도구 버전과 결과를 PR에 남긴다.
+4. 사용자 검토 후 병합하고, 로컬 빌드 설정 변경도 검토·보관한다.
 
 ## 기기 변경 시 인계 양식
 

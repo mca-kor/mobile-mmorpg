@@ -6,9 +6,17 @@ namespace MobileMMORPG.Prototype
     public sealed class PrototypeWorld : MonoBehaviour
     {
         private readonly List<Material> materials = new List<Material>();
+        private Material baseMaterial;
 
         private void Start()
         {
+            baseMaterial = Resources.Load<Material>("PrototypeBase");
+            if (baseMaterial == null)
+            {
+                Debug.LogError("PrototypeBase material is missing from Assets/Prototype/Resources.", this);
+                return;
+            }
+            PrototypeTouchControls touchControls = gameObject.AddComponent<PrototypeTouchControls>();
             Material ground = MakeMaterial(new Color(0.28f, 0.43f, 0.32f));
             Material stone = MakeMaterial(new Color(0.48f, 0.52f, 0.58f));
             Material playerMaterial = MakeMaterial(new Color(0.15f, 0.65f, 0.95f));
@@ -45,6 +53,7 @@ namespace MobileMMORPG.Prototype
             marker.transform.SetParent(player.transform, false);
             marker.transform.localPosition = new Vector3(0f, 1.3f, 0.48f);
             PrototypeMotor motor = player.AddComponent<PrototypeMotor>();
+            motor.SetTouchControls(touchControls);
 
             GameObject cameraObject = new GameObject("Main Camera");
             cameraObject.transform.SetParent(transform, false);
@@ -56,6 +65,7 @@ namespace MobileMMORPG.Prototype
             camera.backgroundColor = new Color(0.45f, 0.65f, 0.8f);
             cameraObject.AddComponent<AudioListener>();
             PrototypeCamera orbit = cameraObject.AddComponent<PrototypeCamera>();
+            orbit.SetTouchControls(touchControls);
             orbit.SetTarget(player.transform);
             motor.SetView(cameraObject.transform);
 
@@ -83,7 +93,7 @@ namespace MobileMMORPG.Prototype
 
         private Material MakeMaterial(Color color)
         {
-            Material material = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            Material material = new Material(baseMaterial);
             material.SetColor("_BaseColor", color);
             materials.Add(material);
             return material;
@@ -91,6 +101,7 @@ namespace MobileMMORPG.Prototype
 
         private void OnGUI()
         {
+            if (Application.isMobilePlatform) return;
             GUI.Box(new Rect(12, 12, 490, 62), "Third-person prototype\nWASD: Move | Hold Right Mouse: Look | Esc: Release cursor");
         }
 

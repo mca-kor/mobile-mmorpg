@@ -11,8 +11,10 @@ namespace MobileMMORPG.Prototype
         [SerializeField] private Transform view;
         private CharacterController controller;
         private float verticalSpeed;
+        private PrototypeTouchControls touchControls;
 
         public void SetView(Transform cameraTransform) => view = cameraTransform;
+        public void SetTouchControls(PrototypeTouchControls controls) => touchControls = controls;
 
         private void Awake() => controller = GetComponent<CharacterController>();
 
@@ -25,6 +27,8 @@ namespace MobileMMORPG.Prototype
                 input.x = (keyboard.dKey.isPressed ? 1f : 0f) - (keyboard.aKey.isPressed ? 1f : 0f);
                 input.y = (keyboard.wKey.isPressed ? 1f : 0f) - (keyboard.sKey.isPressed ? 1f : 0f);
             }
+            if (Application.isFocused && touchControls != null)
+                input += touchControls.MoveAxis;
             Step(input, Time.deltaTime);
         }
 

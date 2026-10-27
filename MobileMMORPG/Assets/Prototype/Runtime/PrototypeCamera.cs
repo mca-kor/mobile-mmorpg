@@ -15,6 +15,9 @@ namespace MobileMMORPG.Prototype
         private bool waitForRelease;
         private CursorLockMode previousLock;
         private bool previousVisible;
+        private PrototypeTouchControls touchControls;
+
+        public void SetTouchControls(PrototypeTouchControls controls) => touchControls = controls;
 
         public void SetTarget(Transform value)
         {
@@ -31,6 +34,12 @@ namespace MobileMMORPG.Prototype
             {
                 waitForRelease = true;
                 ReleaseCursor();
+                return;
+            }
+            if (touchControls != null && touchControls.Looking)
+            {
+                ReleaseCursor();
+                RotateView(touchControls.LookDegrees);
                 return;
             }
             if (!held)
@@ -57,8 +66,13 @@ namespace MobileMMORPG.Prototype
             }
             // Mouse.delta는 프레임 이동량이므로 deltaTime을 다시 곱하지 않는다.
             Vector2 delta = mouse.delta.ReadValue();
-            yaw = Mathf.Repeat(yaw + delta.x * sensitivity, 360f);
-            pitch = Mathf.Clamp(pitch - delta.y * sensitivity, -10f, 65f);
+            RotateView(delta * sensitivity);
+        }
+
+        private void RotateView(Vector2 degrees)
+        {
+            yaw = Mathf.Repeat(yaw + degrees.x, 360f);
+            pitch = Mathf.Clamp(pitch - degrees.y, -10f, 65f);
         }
 
         private void LateUpdate() => UpdatePose();
