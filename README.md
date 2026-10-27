@@ -23,6 +23,7 @@
 2. [현재 상태와 다음 할 일](docs/STATUS.md)
 3. [확정된 결정과 미정 사항](docs/DECISIONS.md)
 4. [Codex 개발 규칙](AGENTS.md)
+5. [첫 시제품 기획과 완료 기준](docs/PROTOTYPE.md)
 
 ## 현재 구조
 
