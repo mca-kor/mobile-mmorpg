@@ -1,6 +1,6 @@
 # 개발 환경과 기기 간 작업 안내
 
-이 문서는 앞으로 따라 할 설정 절차입니다. 도구 설치나 계정 연결이 이미 완료되었다는 뜻은 아닙니다. 현재는 Unity 프로젝트를 생성하지 않습니다.
+이 문서는 앞으로 따라 할 설정 절차입니다. 도구 설치나 계정 연결이 이미 완료되었다는 뜻은 아닙니다. 빈 Unity 프로젝트는 이미 생성되어 main에 병합되었습니다. 새로 만들지 말고 기존 `MobileMMORPG/`를 엽니다. 편집기는 Unity 6.3 LTS `6000.3.27f1`을 사용합니다.
 
 ## 1. 공통 준비
 
@@ -19,10 +19,10 @@
 3. iCloud Drive·OneDrive·Dropbox 자동 동기화 폴더 밖의 로컬 개발 폴더를 선택합니다. Unity 캐시까지 파일 동기화하면 충돌이 생길 수 있습니다.
 4. GitHub Desktop에서 `Fetch origin`으로 원격 변경을 확인하고, 받을 변경이 있으면 `Pull origin`으로 가져옵니다. 로컬 변경이 있다면 먼저 커밋하거나 별도로 보존합니다.
 5. 공식 Unity Hub의 Apple Silicon 지원 버전을 설치합니다. Unity 계정으로 로그인하고 이용 조건·라이선스를 확인합니다.
-6. 실제 Unity 프로젝트를 만들기로 한 다음 Unity 6의 정확한 버전을 결정합니다. 생성 후 `ProjectSettings/ProjectVersion.txt`에 기록된 동일 버전을 모든 편집 환경에서 사용합니다.
+6. Unity 6.3 LTS `6000.3.27f1`을 설치합니다. Unity Hub의 Add(추가)에서 저장소 안의 `MobileMMORPG/`를 선택합니다. `MobileMMORPG/ProjectSettings/ProjectVersion.txt`에 기록된 동일 버전을 사용합니다.
 7. Android 개발 시 해당 편집기용 Android Build Support와 SDK·NDK·OpenJDK를 Hub에서 설치합니다. iOS 빌드는 macOS의 Xcode와 iOS 모듈이 필요하고, 배포에는 Apple의 계정·서명 요건을 별도로 확인합니다. 지금 모두 설치할 필요는 없습니다.
 
-Unity 프로젝트를 생성하는 후속 작업에서는 Visible Meta Files와 Asset Serialization의 Force Text를 확인합니다. `Assets/`, `Packages/`, `ProjectSettings/`와 에셋의 `.meta` 파일을 Git에 기록합니다. Unity Hub로 열 폴더는 이 세 폴더가 있는 Unity 프로젝트 폴더입니다. 현재 저장소에는 아직 없습니다.
+Unity 프로젝트를 생성하는 후속 작업에서는 Visible Meta Files와 Asset Serialization의 Force Text를 확인합니다. `Assets/`, `Packages/`, `ProjectSettings/`와 에셋의 `.meta` 파일을 Git에 기록합니다. Unity Hub로 열 폴더는 이 세 폴더가 있는 Unity 프로젝트 폴더입니다. 현재 저장소에서는 `MobileMMORPG/`입니다. 저장소 루트를 선택하거나 프로젝트를 다시 생성하지 않습니다.
 
 ## 3. Windows PC: 클라우드 중심
 
@@ -64,9 +64,9 @@ AGENTS.md와 docs/STATUS.md, docs/DECISIONS.md를 먼저 읽어 줘.
 변경과 검증 결과를 한국어로 보여 주고 STATUS를 갱신해 줘.
 ```
 
-## 6. 이번 초기 문서를 GitHub에 반영하기
+## 6. 변경을 GitHub에 반영하는 방법 (초기 문서 작업 예시)
 
-현재 작업 환경에 있는 변경은 PC의 GitHub Desktop에 자동으로 나타나지 않습니다. Codex에서 변경이 보이는 작업 환경을 기준으로 커밋·푸시·PR을 요청하거나, 변경 파일을 로컬 저장소로 가져온 뒤 아래 절차를 진행합니다. 이번 변경은 `docs/initial-setup` 작업 브랜치와 PR을 통해 검토합니다. 기본 브랜치 병합은 사용자가 검토한 뒤 진행합니다. 아래 절차는 이후 새 변경을 올릴 때도 참고할 수 있습니다.
+현재 작업 환경에 있는 변경은 PC의 GitHub Desktop에 자동으로 나타나지 않습니다. Codex에서 변경이 보이는 작업 환경을 기준으로 커밋·푸시·PR을 요청하거나, 변경 파일을 로컬 저장소로 가져온 뒤 아래 절차를 진행합니다. 초기 문서는 PR #1, 빈 Unity 프로젝트는 PR #2로 이미 병합했습니다. 아래 `docs/initial-setup`은 과거 작업 예시입니다. 새 작업에서는 새로운 브랜치 이름과 해당 변경 파일을 사용합니다. 기본 브랜치 병합은 사용자가 검토한 뒤 진행합니다. 아래 절차는 이후 새 변경을 올릴 때도 참고할 수 있습니다.
 
 GitHub Desktop에서 파일이 보이는 경우:
 
@@ -104,9 +104,9 @@ git push -u origin docs/initial-setup
 
 - [ ] 각 기기에서 같은 GitHub 저장소 접근 가능
 - [ ] Codex Cloud에서 문서를 읽고 현재 단계를 설명할 수 있음
-- [ ] 작업 브랜치 → PR → 검토 → 병합 흐름 확인
-- [ ] Mac에서 병합된 문서를 Pull하여 확인
+- [x] 작업 브랜치 → PR → 검토 → 병합 흐름 확인 (PR #2)
+- [x] Mac에서 main 받기 완료 (사용자 보고)
 - [ ] 모바일·태블릿에서 동일 PR과 STATUS 열기
-- [ ] Unity 프로젝트 생성 전 정확한 Unity 버전·경로 결정
+- [x] Unity 버전·경로 결정 및 프로젝트 생성 완료
 
 기기 간 실제 확인 결과는 STATUS에 날짜와 함께 남깁니다.
