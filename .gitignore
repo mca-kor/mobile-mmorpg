@@ -1,0 +1,66 @@
+# Unity: 프로젝트가 저장소 루트 또는 하위 폴더에 있어도 적용
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+[Mm]emoryCaptures/
+[Rr]ecordings/
+
+# IDE에서 다시 생성하는 파일
+.vs/
+.idea/
+.gradle/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.opendb
+*.VC.db
+*.pidb.meta
+*.mdb
+*.mdb.meta
+*.pdb
+*.pdb.meta
+
+# Unity 도구의 재생성 데이터
+**/[Aa]ssets/AssetStoreTools*
+**/[Aa]ssets/Plugins/Editor/JetBrains*
+**/[Aa]ssets/AddressableAssetsData/*/*.bin*
+**/[Aa]ssets/StreamingAssets/aa.meta
+**/[Aa]ssets/StreamingAssets/aa/*
+**/sysinfo.txt
+**/crashlytics-build.properties
+
+# 빌드 패키지
+*.apk
+*.aab
+*.unitypackage
+*.app/
+*.ipa
+
+# OS 임시 파일
+.DS_Store
+._*
+Thumbs.db
+Desktop.ini
+
+# 비밀정보: 예제 파일은 가짜 값만 포함
+.env
+.env.*
+!.env.example
+*.keystore
+*.jks
+*.p12
+*.pfx
+*.mobileprovision
+
+# Assets/, Packages/, ProjectSettings/, 일반 .meta 파일은 제외하지 않는다.
