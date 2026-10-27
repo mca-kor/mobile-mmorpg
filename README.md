@@ -2,7 +2,7 @@
 
 프로그래밍 경험이 없는 게임 기획자가 ChatGPT와 Codex를 활용해 모바일 MMORPG를 만드는 프로젝트입니다. Windows PC, macOS, 스마트폰, 태블릿에서 같은 GitHub 저장소를 기준으로 작업을 이어가는 것이 첫 번째 목표입니다.
 
-현재는 **개발 문서와 작업 규칙을 준비한 단계**입니다. Unity 프로젝트, 게임 코드, 서버는 아직 만들지 않았습니다.
+현재는 **개발 문서와 빈 Unity 프로젝트 구축을 완료한 단계**입니다. Unity 6.3 LTS `6000.3.27f1`, Universal 3D(URP)를 사용하며 프로젝트 경로는 `MobileMMORPG/`입니다. 게임 기능과 서버는 아직 구현하지 않았습니다.
 
 ## 기기별 역할
 
@@ -32,6 +32,7 @@ mobile-mmorpg/
 ├── .gitignore          # Unity 임시 파일·빌드 결과·비밀정보 제외
 ├── README.md           # 프로젝트 입구
 ├── AGENTS.md           # Codex 작업 규칙
+├── MobileMMORPG/       # Assets, Packages, ProjectSettings가 있는 Unity 프로젝트
 └── docs/
     ├── STATUS.md       # 진행 상황과 인계
     ├── DECISIONS.md    # 주요 결정 기록
@@ -46,4 +47,4 @@ mobile-mmorpg/
 
 PR(Pull Request)은 변경을 본류에 합치기 전에 검토하는 제안서입니다. 브랜치는 작업을 분리하는 공간이고, 커밋은 변경을 기록한 저장 지점입니다. 자세한 절차는 [SETUP](docs/SETUP.md)을 따릅니다.
 
-Unity 6의 정확한 버전과 프로젝트 경로, 서버 기술, 네트워크 방식은 아직 미정입니다. 결정 후 기록하고 진행합니다.
+Unity 버전 기준 파일은 `MobileMMORPG/ProjectSettings/ProjectVersion.txt`입니다. 서버 기술과 네트워크 방식은 아직 미정입니다.
