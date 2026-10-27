@@ -1,0 +1,6 @@
+{
+  "name": "MobileMMORPG.Prototype",
+  "rootNamespace": "MobileMMORPG.Prototype",
+  "references": ["Unity.InputSystem"],
+  "autoReferenced": true
+}
