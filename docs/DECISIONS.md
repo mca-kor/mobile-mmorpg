@@ -47,6 +47,14 @@
 - D-016: 실기기 첫 검증은 가로 화면 양방향을 기본값으로 한다. 빌드 준비 메뉴는 실행한 경우에만 로컬 씬 목록·화면 방향·실기기 SDK 설정을 변경한다. 서명·빌드는 사용자 Mac에서 진행한다.
 - 런타임 생성 재질을 Resources 자산으로 참조하고, 생성하는 렌더러·충돌체를 link.xml로 보존한다. 자세한 검증은 [IPHONE](IPHONE.md)에 기록한다.
 
+## iPhone 앱 식별자 보존
+
+2026-10-29 (한국 시간), 사용자가 지정한 식별자와 Mac 로컬 설정·빌드 출력 검토를 근거로 기록한다.
+
+- D-017: iPhone 시제품의 Bundle Identifier(앱 고유 식별자)는 `com.ahnmacmini.mobilemmorpg.prototype`를 사용한다. 내보낸 Xcode 프로젝트에는 이 값이 있었지만 Unity 원본 설정에는 템플릿 값이 남아 있어 `ProjectSettings/ProjectSettings.asset`의 `applicationIdentifier.iPhone`만 맞춘다. 다음 Unity 빌드에서도 지정 값이 유지되도록 하기 위한 변경이다.
+- 기존 iPhone 씬 목록·가로 화면 설정·재질 변경을 보존한다. 서명 키·인증서·Xcode 빌드 출력은 GitHub 반영 대상에서 제외한다. 식별자 저장은 최소 지원 OS·유료 서비스·배포 방식의 확정을 뜻하지 않는다.
+- 이번 설정과 문서는 로컬 검토용 변경이며, GitHub 반영 상태는 [STATUS](STATUS.md)에 기록한다.
+
 ## 미정 사항
 
 - 모바일 성능 목표와 렌더링 품질 세부 설정
