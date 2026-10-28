@@ -1,11 +1,11 @@
 # 첫 시제품 실행과 검증
 
-Unity 6.3 LTS `6000.3.27f1` 기준. 현재 코드는 클라우드에서 작성했으며 Unity 컴파일·실행·빌드는 미실행이다. Mac 검증 전에는 완료로 판단하지 않는다.
+Unity 6.3 LTS `6000.3.27f1` 기준. 첫 Mac 시제품은 사용자에게 정상 작동을 보고받았다. 이번 모바일 확장 코드는 클라우드에서 작성했으며 Unity 컴파일·iOS 실행·빌드는 직접 검증하지 못했다. iPhone 단계는 [IPHONE](IPHONE.md)을 따른다.
 
 ## 병합 전에 Mac에서 실행하기
 
 1. Unity에서 Play 중이면 Play를 다시 눌러 멈춘다. 저장할 기존 변경이 있다면 저장·커밋하고 Unity를 닫는다.
-2. GitHub Desktop에서 Fetch origin을 누른다. Current Branch에서 `feature/third-person-prototype`를 선택한다. 로컬 변경 충돌 안내가 나오면 강제로 덮어쓰지 않는다.
+2. GitHub Desktop에서 Fetch origin을 누른다. Current Branch에서 `feature/iphone-touch-controls`를 선택한다. 로컬 변경 충돌 안내가 나오면 강제로 덮어쓰지 않는다.
 3. Unity Hub의 Projects에서 기존 `MobileMMORPG`를 연다. 스크립트 컴파일이 끝날 때까지 기다린다.
 4. Unity의 Project 창에서 `Assets → Prototype → Scenes`를 열고 `ThirdPersonPrototype`을 더블 클릭한다. 기존 SampleScene은 변경하지 않는다.
 5. 이 씬은 Play 전에 바닥과 캐릭터가 보이지 않는 것이 정상이다. Hierarchy에는 Third Person Prototype이 있고, Play를 누르면 전용 스크립트가 맵·캐릭터·카메라를 만든다.
@@ -19,7 +19,7 @@ PR 검증을 위해 브랜치를 바꾼 것이므로 먼저 병합할 필요는 
 
 ## 자동 테스트
 
-Play를 종료한 뒤 Window → General → Test Runner를 연다. PlayMode 탭에서 Run All을 누른다. PrototypeMotorTests의 아래 4개 결과를 확인한다.
+Play를 종료한 뒤 Window → General → Test Runner를 연다. PlayMode 탭에서 Run All을 누른다. 기존 PrototypeMotorTests의 아래 4개 결과와 새 PrototypeTouchStateTests의 12개 사례를 확인한다. 터치 검증 항목은 [IPHONE](IPHONE.md)에 있다.
 
 - 대각선 이동 속도가 직선과 같은지
 - 카메라 기준 이동과 입력을 놓았을 때 정지하는지
@@ -37,7 +37,7 @@ Play를 종료한 뒤 Window → General → Test Runner를 연다. PlayMode 탭
 - Esc, 오른쪽 버튼 해제, Play 종료 후 포인터를 정상 사용 가능한지
 - 씬을 다시 Play해도 캐릭터·카메라가 한 개씩만 생성되는지
 
-이동 속도 4, 회전 감도 0.15, 카메라 거리 6, 상하 각도 -10~65는 초기 조정값이다. 체감 검증 후 바꿀 수 있다. 장애물 뒤에서 카메라가 가려지는 문제·줌·모바일 터치는 이번 범위 밖이다. 처음에는 맵 중앙에서 검증한다.
+이동 속도 4, 회전 감도 0.15, 카메라 거리 6, 상하 각도 -10~65는 초기 조정값이다. 체감 검증 후 바꿀 수 있다. 장애물 뒤에서 카메라가 가려지는 문제·줌은 이번 범위 밖이다. 모바일 터치는 이번 후속 단계에서 추가했다. 처음에는 맵 중앙에서 검증한다.
 
 ## 결과 남기기
 

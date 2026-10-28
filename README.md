@@ -2,7 +2,7 @@
 
 프로그래밍 경험이 없는 게임 기획자가 ChatGPT와 Codex를 활용해 모바일 MMORPG를 만드는 프로젝트입니다. Windows PC, macOS, 스마트폰, 태블릿에서 같은 GitHub 저장소를 기준으로 작업을 이어가는 것이 첫 번째 목표입니다.
 
-현재는 **개발 문서와 빈 Unity 프로젝트 구축을 완료한 단계**입니다. Unity 6.3 LTS `6000.3.27f1`, Universal 3D(URP)를 사용하며 프로젝트 경로는 `MobileMMORPG/`입니다. 첫 이동 시제품 코드와 테스트 씬을 준비했으며 Mac에서의 실행 검증은 대기 중입니다. 서버는 아직 구현하지 않았습니다.
+현재는 **개발 문서와 빈 Unity 프로젝트 구축을 완료한 단계**입니다. Unity 6.3 LTS `6000.3.27f1`, Universal 3D(URP)를 사용하며 프로젝트 경로는 `MobileMMORPG/`입니다. 첫 이동 시제품은 Mac 정상 작동을 사용자에게 보고받았습니다. iPhone용 화면 조이스틱·터치 시점 조작과 빌드 안내를 준비했으며 iOS 실기기 검증은 대기 중입니다. 서버는 아직 구현하지 않았습니다.
 
 ## 기기별 역할
 
@@ -25,6 +25,7 @@
 4. [Codex 개발 규칙](AGENTS.md)
 5. [첫 시제품 기획과 완료 기준](docs/PROTOTYPE.md)
 6. [첫 시제품 실행·검증 안내](docs/PLAYTEST.md)
+7. [iPhone 조작·빌드·실기기 검증](docs/IPHONE.md)
 
 ## 현재 구조
 
@@ -40,7 +41,8 @@ mobile-mmorpg/
     ├── DECISIONS.md    # 주요 결정 기록
     ├── SETUP.md        # 기기별 준비와 GitHub 작업 방법
     ├── PROTOTYPE.md    # 첫 시제품 기획
-    └── PLAYTEST.md     # 첫 시제품 실행과 검증
+    ├── PLAYTEST.md     # 첫 시제품 실행과 검증
+    └── IPHONE.md       # iPhone 조작과 빌드 안내
 ```
 
 2026-10-27에 확인한 작업 사본은 `.gitattributes`만 추적하고 있었으며, 이 문서와 규칙을 추가했습니다. 저장소 주소: https://github.com/mca-kor/mobile-mmorpg

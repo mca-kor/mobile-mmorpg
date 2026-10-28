@@ -1,0 +1,7 @@
+{
+  "name": "MobileMMORPG.Prototype.Editor",
+  "rootNamespace": "MobileMMORPG.Prototype.Editor",
+  "references": [],
+  "includePlatforms": ["Editor"],
+  "autoReferenced": true
+}
