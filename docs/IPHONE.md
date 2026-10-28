@@ -2,19 +2,19 @@
 
 Unity 6.3 LTS `6000.3.27f1`, 프로젝트 `MobileMMORPG/` 기준. iPhone을 첫 모바일 테스트 기기로 사용한다. 메뉴·버튼은 원문 이름으로 표시한다.
 
-현재 상태 (2026-10-29): 사용자가 Mac과 iPhone에서 정상 작동을 보고했다. Xcode 스크린샷에서 실기기 실행 상태를 확인했다. 클라우드에서 직접 빌드·실행한 결과는 아니며, 아래 개별 검증 항목과 자동 테스트는 별도로 확인한다.
+현재 상태 (2026-10-29): 사용자가 Mac과 iPhone에서 정상 작동을 보고했고 [PR #6](https://github.com/mca-kor/mobile-mmorpg/pull/6) 병합을 확인했다. 이전 클라우드 기록에는 Xcode 스크린샷의 실기기 실행 상태 확인이 남아 있다. 이번 Mac 로컬 작업에서는 저장된 설정을 검토했으며 Unity·Xcode 빌드·게임 실행은 미실행이다. 아래 개별 검증 항목과 자동 테스트는 별도로 확인한다.
 
 ## 이번에 확인한 설정
 
-- Unity·Xcode의 Bundle Identifier: `com.ahnmacmini.mobilemmorpg.prototype`
-- Xcode의 Automatically manage signing과 Personal Team을 사용해 실행했다.
+- iPhone Bundle Identifier: `com.ahnmacmini.mobilemmorpg.prototype`. 이번 로컬 파일 검토에서 Xcode 빌드 출력에는 이 값이 있지만 Unity 원본에는 템플릿 식별자가 남아 있음을 확인했다. Unity의 `applicationIdentifier.iPhone`을 지정 값으로 맞췄다. 내보낸 Xcode 프로젝트는 수정하지 않았다.
+- 이전 실기기 기록에서는 Xcode의 Automatically manage signing과 Personal Team을 사용해 실행했다.
 - Unity 템플릿 기본 식별자로 Failed Registering Bundle Identifier가 나올 경우 고유 식별자로 변경한다. Unity와 이미 내보낸 Xcode 프로젝트 모두에 같은 값을 입력한다.
-- 기기 모델·iOS·Xcode 버전과 체크리스트별 결과는 아직 미기록이다. 서명 인증서·계정 정보는 문서에 복사하지 않는다.
+- 이번 Mac에서 확인한 Xcode는 `27.1` (`27A9275`)이다. 기존 실기기 실행 당시의 정확한 버전과 기기 모델·iOS·체크리스트별 결과는 별도 미확인이다. 서명 인증서·계정 정보는 문서에 복사하지 않는다.
 
 ## 1. Mac에서 먼저 확인
 
 1. Unity의 Play를 종료하고 저장하지 않은 작업을 보존한 뒤 Unity를 닫는다.
-2. GitHub Desktop에서 Fetch origin → Current Branch → `feature/iphone-touch-controls`를 선택한다.
+2. GitHub Desktop에서 Fetch origin을 누르고 Current Branch가 [STATUS](STATUS.md)의 작업 브랜치인지 확인한다. PR #6은 이미 main에 포함되어 있다. 로컬 수정은 보존하기 전 다른 브랜치로 옮기지 않는다.
 3. Unity Hub에서 기존 MobileMMORPG를 열고 컴파일이 끝날 때까지 기다린다.
 4. Project 창에서 Assets → Prototype → Scenes → ThirdPersonPrototype을 연다.
 5. Play를 누르고 Game 화면을 클릭한다. 왼쪽 아래 MOVE 원과 오른쪽 LOOK 표시가 보인다.
@@ -34,7 +34,7 @@ Play를 종료한다. 기존 씬과 로컬 수정은 먼저 저장한다.
 2. 안내를 읽고 Apply를 누른다. 공통 Scene List에 시제품 씬을 첫 번째로 등록하고, 기존 다른 씬은 보존한다. 가로 화면 양방향 회전만 허용한다. 이 작업은 로컬 ProjectSettings를 변경한다.
 3. Tools → Prototype → Switch to iOS를 선택한다. 플랫폼 전환과 에셋 재임포트가 끝날 때까지 기다린다. iOS Build Support가 없으면 설치 안내가 나온다.
 4. File → Build Profiles를 연다. 활성 플랫폼이 iOS인지 확인한다. 별도 프로필에서 Override Global Scene List를 사용 중이라면 그 프로필의 Scene List에도 ThirdPersonPrototype을 첫 번째 활성 씬으로 넣는다. 이번 프로젝트에서 별도 프로필이 없다면 공통 목록을 그대로 사용한다.
-5. Edit → Project Settings → Player에서 iOS의 Other Settings → Identification → Bundle Identifier를 확인한다. 수정이 잠겨 있으면 Override Default Bundle Identifier를 켠다. `com.yourname.mobilemmorpg.prototype`처럼 자신만의 영문·숫자 기반 식별자를 사용한다. `yourname`은 실제 고유 문자열로 바꾼다.
+5. Edit → Project Settings → Player에서 iOS의 Other Settings → Identification → Bundle Identifier가 `com.ahnmacmini.mobilemmorpg.prototype`인지 확인한다. 수정이 잠겨 있으면 Override Default Bundle Identifier를 켠다. 내보낸 Xcode 프로젝트만 수정하면 다음 Unity 빌드에서 원래 값이 다시 적용될 수 있으므로 Unity 원본 설정에도 저장한다.
 6. File → Build Profiles로 돌아가 Build를 누른다. 첫 검증은 Build And Run 대신 Build로 Xcode 프로젝트를 내보낸다.
 7. 출력 위치는 Unity 프로젝트 안의 `Builds/iOS/`로 지정한다. 이 폴더는 .gitignore로 제외된다. 이미 중요한 출력물이 있는 폴더를 덮어쓰지 않는다.
 
@@ -78,6 +78,10 @@ PR에 iPhone 모델, iOS·Xcode·Unity 버전, 성공·실패 항목과 첫 오�
 
 ## 6. GitHub에 반영
 
-이번 기능은 작업 브랜치의 PR에서 검토하고, 실행 결과를 확인한 뒤 Merge pull request → Confirm merge로 병합한다. 그다음 GitHub Desktop에서 main으로 전환하고 Fetch origin → Pull origin으로 받는다. 인증·서명은 사용자 기기에서만 진행한다.
+PR #6은 2026-10-29 (한국 시간)에 병합됐다. 이번 Mac 로컬 설정·문서 변경은 `codex/mac-local-iphone-settings`에서 사용자 확인 후 별도 커밋·PR로 제출하며, 실제 반영 상태는 [STATUS](STATUS.md)에 기록한다. GitHub Desktop으로 진행할 때는 Changes에서 변경을 검토하고 Commit to codex/mac-local-iphone-settings → Publish branch → Create Pull Request 순서를 따른다. 병합은 사용자가 Merge pull request → Confirm merge로 진행한다. 인증·서명은 사용자 기기에서만 관리한다.
 
 Prepare iPhone Build로 생긴 EditorBuildSettings·ProjectSettings 변경은 자동 푸시되지 않는다. 로컬 수정이 남아 브랜치 전환이 막히면 먼저 Changes를 확인하고 빌드 설정 변경을 별도 커밋·PR로 보관한다. 내용을 모른 채 Discard Changes를 누르지 않는다. Bundle Identifier는 공유 가능한 설정이지만 서명 키·인증서는 저장소에 넣지 않는다.
+
+제출 점검에서는 기존 Git 이력부터 비어 있지 않았던 `ProjectSettings.asset`의 `ps4Passcode`를 비밀값으로 감지해 업로드가 거부됐다. 값은 출력하지 않고 제출 설정에서 빈값으로 바꿨다. 원본은 로컬 백업에 보존하며 이 변경으로 기존 Git 이력이 지워지는 것은 아니다. 자세한 반영 상태와 남은 확인 사항은 [STATUS](STATUS.md)를 따른다.
+
+이번 작업 시작 시점의 수정 파일 8개와 미추적 설정 파일 2개는 로컬 `Builds/LocalStateBackups/2026-10-29_021356_KST/`에 사본·변경 패치·SHA-256(파일 내용 비교용 값) 목록으로 보관했다. 이 경로는 Unity 프로젝트 기준이며 Git에서 제외된다. `ShaderGraphSettings 2.asset`과 `URPProjectSettings 2.asset`은 각각 원본과 내용이 같지만 삭제하지 않았다. 백업·빌드 출력은 다른 기기에 자동 동기화되지 않는다. GitHub에 올릴 파일과 기존 자산 변경의 검토 결과는 [STATUS](STATUS.md)를 따른다.
