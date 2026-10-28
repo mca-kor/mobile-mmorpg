@@ -2,7 +2,14 @@
 
 Unity 6.3 LTS `6000.3.27f1`, 프로젝트 `MobileMMORPG/` 기준. iPhone을 첫 모바일 테스트 기기로 사용한다. 메뉴·버튼은 원문 이름으로 표시한다.
 
-현재 상태: 모바일 조작 코드와 빌드 준비 메뉴 작성. 클라우드에는 Unity·Xcode·iPhone이 없어 컴파일·실기기 빌드는 미실행이다. Xcode와 iOS Build Support 설치 완료는 사용자 보고다.
+현재 상태 (2026-10-29): 사용자가 Mac과 iPhone에서 정상 작동을 보고했다. Xcode 스크린샷에서 실기기 실행 상태를 확인했다. 클라우드에서 직접 빌드·실행한 결과는 아니며, 아래 개별 검증 항목과 자동 테스트는 별도로 확인한다.
+
+## 이번에 확인한 설정
+
+- Unity·Xcode의 Bundle Identifier: `com.ahnmacmini.mobilemmorpg.prototype`
+- Xcode의 Automatically manage signing과 Personal Team을 사용해 실행했다.
+- Unity 템플릿 기본 식별자로 Failed Registering Bundle Identifier가 나올 경우 고유 식별자로 변경한다. Unity와 이미 내보낸 Xcode 프로젝트 모두에 같은 값을 입력한다.
+- 기기 모델·iOS·Xcode 버전과 체크리스트별 결과는 아직 미기록이다. 서명 인증서·계정 정보는 문서에 복사하지 않는다.
 
 ## 1. Mac에서 먼저 확인
 
