@@ -78,7 +78,7 @@ PR에 iPhone 모델, iOS·Xcode·Unity 버전, 성공·실패 항목과 첫 오�
 
 ## 6. GitHub에 반영
 
-PR #6은 2026-10-29 (한국 시간)에 병합됐다. 이번 Mac 로컬 설정·문서 변경은 `codex/mac-local-iphone-settings`에서 사용자 확인 후 별도 커밋·PR로 제출하며, 실제 반영 상태는 [STATUS](STATUS.md)에 기록한다. GitHub Desktop으로 진행할 때는 Changes에서 변경을 검토하고 Commit to codex/mac-local-iphone-settings → Publish branch → Create Pull Request 순서를 따른다. 병합은 사용자가 Merge pull request → Confirm merge로 진행한다. 인증·서명은 사용자 기기에서만 관리한다.
+PR #6은 2026-10-29 (한국 시간)에 병합됐다. 이번 Mac 로컬 설정·문서 변경은 사용자 확인 후 `codex/mac-local-iphone-settings`에 반영하고 [PR #7](https://github.com/mca-kor/mobile-mmorpg/pull/7)을 생성했다. 병합 대기이며 실제 반영 상태는 [STATUS](STATUS.md)에 기록한다. GitHub Desktop으로 진행할 때는 Changes에서 변경을 검토하고 Commit to codex/mac-local-iphone-settings → Publish branch → Create Pull Request 순서를 따른다. 병합은 사용자가 Merge pull request → Confirm merge로 진행한다. 인증·서명은 사용자 기기에서만 관리한다.
 
 Prepare iPhone Build로 생긴 EditorBuildSettings·ProjectSettings 변경은 자동 푸시되지 않는다. 로컬 수정이 남아 브랜치 전환이 막히면 먼저 Changes를 확인하고 빌드 설정 변경을 별도 커밋·PR로 보관한다. 내용을 모른 채 Discard Changes를 누르지 않는다. Bundle Identifier는 공유 가능한 설정이지만 서명 키·인증서는 저장소에 넣지 않는다.
 
