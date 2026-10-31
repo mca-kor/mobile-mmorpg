@@ -2,7 +2,7 @@
 
 Unity 6.3 LTS `6000.3.27f1`, 프로젝트 `MobileMMORPG/` 기준. iPhone을 첫 모바일 테스트 기기로 사용한다. 메뉴·버튼은 원문 이름으로 표시한다.
 
-현재 상태 (2026-10-29): 사용자가 Mac과 iPhone에서 정상 작동을 보고했고 [PR #6](https://github.com/mca-kor/mobile-mmorpg/pull/6) 병합을 확인했다. 이전 클라우드 기록에는 Xcode 스크린샷의 실기기 실행 상태 확인이 남아 있다. 이번 Mac 로컬 작업에서는 저장된 설정을 검토했으며 Unity·Xcode 빌드·게임 실행은 미실행이다. 아래 개별 검증 항목과 자동 테스트는 별도로 확인한다.
+현재 상태 (2026-10-31): 사용자가 Mac과 iPhone에서 정상 작동을 보고했고 [PR #6](https://github.com/mca-kor/mobile-mmorpg/pull/6) 병합을 확인했다. Mac 배치 실행에서 PlayMode 테스트 16개 전체 통과를 직접 확인했다. 설정 보존·검증 기록의 [PR #7](https://github.com/mca-kor/mobile-mmorpg/pull/7)은 열려 있다. Xcode 빌드·iPhone 재실행과 아래 개별 실기기 항목은 이번 작업에서 미실행이다.
 
 ## 이번에 확인한 설정
 
@@ -21,7 +21,7 @@ Unity 6.3 LTS `6000.3.27f1`, 프로젝트 `MobileMMORPG/` 기준. iPhone을 첫 
 6. 왼쪽 원을 왼쪽 마우스 버튼으로 누른 채 드래그하면 캐릭터가 이동한다. 버튼을 놓으면 정지한다.
 7. 오른쪽 화면에서 왼쪽 마우스 버튼으로 드래그하면 시점이 회전한다. 첫 누름에서 시점이 갑자기 튀지 않아야 한다.
 8. 기존 WASD 이동과 오른쪽 마우스 버튼 회전도 확인한다. Mac 마우스 시험은 한 번에 한 손가락만 흉내 낸다.
-9. Play를 종료한 뒤 Window → General → Test Runner의 PlayMode → Run All을 실행한다. 기존 테스트 4개와 새 터치 상태 테스트 12개 사례를 확인한다. 작성된 테스트이며 클라우드에서 통과한 결과는 아니다.
+9. Play를 종료한 뒤 Window → General → Test Runner의 PlayMode → Run All을 실행한다. 기존 테스트 4개와 터치 상태 테스트 12개 사례를 확인한다. 2026-10-31에는 이 16개 사례가 Mac 배치 실행에서 통과했으며 수동 화면·실기기 조작 결과와 구분한다.
 10. Window → General → Console에서 첫 빨간 오류가 있으면 전체 내용을 알려준다.
 
 Editor에 가상 Touchscreen이 연결되어 있으면 마우스 모사 대신 해당 터치 입력을 사용한다. 실기기와 Editor는 같은 손가락 역할·좌표 규칙을 사용하지만, iOS의 실제 이벤트·화면·성능까지 Mac에서 검증할 수는 없다.
@@ -65,7 +65,7 @@ Unity에서는 Build가 끝나 Xcode 프로젝트가 생성되어야 한다. 실
 
 - [ ] Mac에서 기존 WASD·오른쪽 버튼 조작 정상
 - [ ] Mac 마우스 모사로 MOVE·LOOK을 각각 확인
-- [ ] PlayMode 테스트 결과 확인 (기존 4 + 새 12 사례)
+- [x] PlayMode 테스트 결과 확인 (2026-10-31 Mac 배치 실행, 기존 4 + 터치 12 = 16개 통과)
 - [ ] iPhone 빌드·서명·설치 성공, 재질이 분홍색으로 표시되지 않음
 - [ ] 왼쪽 이동과 오른쪽 회전 동시 조작 정상
 - [ ] 오른쪽 먼저 누르기·한쪽만 떼기·세 번째 손가락 시험 정상
@@ -83,5 +83,7 @@ PR #6은 2026-10-29 (한국 시간)에 병합됐다. 이번 Mac 로컬 설정·�
 Prepare iPhone Build로 생긴 EditorBuildSettings·ProjectSettings 변경은 자동 푸시되지 않는다. 로컬 수정이 남아 브랜치 전환이 막히면 먼저 Changes를 확인하고 빌드 설정 변경을 별도 커밋·PR로 보관한다. 내용을 모른 채 Discard Changes를 누르지 않는다. Bundle Identifier는 공유 가능한 설정이지만 서명 키·인증서는 저장소에 넣지 않는다.
 
 제출 점검에서는 기존 Git 이력부터 비어 있지 않았던 `ProjectSettings.asset`의 `ps4Passcode`를 비밀값으로 감지해 업로드가 거부됐다. 값은 출력하지 않고 제출 설정에서 빈값으로 바꿨다. 원본은 로컬 백업에 보존하며 이 변경으로 기존 Git 이력이 지워지는 것은 아니다. 자세한 반영 상태와 남은 확인 사항은 [STATUS](STATUS.md)를 따른다.
+
+2026-10-31에는 Unity 테스트 실행 중 이 항목이 다시 채워졌다. 생성된 설정 사본은 Git에서 제외된 검증 폴더에 보관하고, 해당 항목만 실행 전의 빈값으로 복원했다. Unity를 열어 작업한 뒤에는 커밋 전에 값이 비어 있는지 확인하며 생성된 값·원본 로그는 업로드하지 않는다.
 
 이번 작업 시작 시점의 수정 파일 8개와 미추적 설정 파일 2개는 로컬 `Builds/LocalStateBackups/2026-10-29_021356_KST/`에 사본·변경 패치·SHA-256(파일 내용 비교용 값) 목록으로 보관했다. 이 경로는 Unity 프로젝트 기준이며 Git에서 제외된다. `ShaderGraphSettings 2.asset`과 `URPProjectSettings 2.asset`은 각각 원본과 내용이 같지만 삭제하지 않았다. 백업·빌드 출력은 다른 기기에 자동 동기화되지 않는다. GitHub에 올릴 파일과 기존 자산 변경의 검토 결과는 [STATUS](STATUS.md)를 따른다.

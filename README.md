@@ -2,7 +2,7 @@
 
 프로그래밍 경험이 없는 게임 기획자가 ChatGPT와 Codex를 활용해 모바일 MMORPG를 만드는 프로젝트입니다. Windows PC, macOS, 스마트폰, 태블릿에서 같은 GitHub 저장소를 기준으로 작업을 이어가는 것이 첫 번째 목표입니다.
 
-현재는 **Mac·iPhone 이동 시제품의 정상 작동을 사용자에게 보고받은 단계**입니다. Unity 6.3 LTS `6000.3.27f1`, Universal 3D(URP)를 사용하며 프로젝트 경로는 `MobileMMORPG/`입니다. iPhone 화면 조이스틱·터치 시점 조작은 [PR #6](https://github.com/mca-kor/mobile-mmorpg/pull/6)으로 병합되었습니다. 자동 테스트와 개별 실기기 검증 결과는 별도 확인이 필요합니다. iPhone Bundle Identifier는 `com.ahnmacmini.mobilemmorpg.prototype`이며 로컬 빌드 설정 보존 상태는 [STATUS](docs/STATUS.md)에 기록합니다. 서버는 아직 구현하지 않았습니다.
+현재는 **Mac·iPhone 이동 시제품의 정상 작동을 사용자에게 보고받고, Mac 자동 테스트 16개를 통과한 단계**입니다. Unity 6.3 LTS `6000.3.27f1`, Universal 3D(URP)를 사용하며 프로젝트 경로는 `MobileMMORPG/`입니다. iPhone 화면 조이스틱·터치 시점 조작은 [PR #6](https://github.com/mca-kor/mobile-mmorpg/pull/6)으로 병합되었습니다. 2026-10-31 Mac에서 PlayMode 테스트 16개가 통과했으며 화면 표시·iPhone 개별 조작 검증은 별도 확인이 필요합니다. iPhone Bundle Identifier는 `com.ahnmacmini.mobilemmorpg.prototype`이며 설정 보존·검증 기록은 [PR #7](https://github.com/mca-kor/mobile-mmorpg/pull/7)과 [STATUS](docs/STATUS.md)에 기록합니다. 서버는 아직 구현하지 않았습니다.
 
 ## 기기별 역할
 

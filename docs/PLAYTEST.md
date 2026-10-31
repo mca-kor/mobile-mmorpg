@@ -1,6 +1,6 @@
 # 첫 시제품 실행과 검증
 
-Unity 6.3 LTS `6000.3.27f1` 기준. Mac·iPhone 시제품은 사용자에게 정상 작동을 보고받았고 PR #6 병합을 확인했다. 2026-10-29 로컬 설정 검토에서는 Unity·Xcode 빌드·게임 실행과 자동 테스트를 다시 실행하지 않았다. iPhone 단계는 [IPHONE](IPHONE.md)을 따른다.
+Unity 6.3 LTS `6000.3.27f1` 기준. Mac·iPhone 시제품은 사용자에게 정상 작동을 보고받았고 PR #6 병합을 확인했다. 2026-10-31 Mac 배치 실행에서 기존 PlayMode 테스트 16개가 모두 통과했다. 실제 화면·키보드·마우스와 iPhone 단계는 아래 수동 검증 및 [IPHONE](IPHONE.md)을 따른다.
 
 ## Mac에서 실행하기
 
@@ -26,7 +26,9 @@ Play를 종료한 뒤 Window → General → Test Runner를 연다. PlayMode 탭
 - 벽·바닥을 통과하지 않는지
 - 캐릭터가 이동할 때 카메라 거리와 회전이 유지되는지
 
-테스트 코드는 포함했지만 클라우드에서 실행하지 못했다. 실패하면 테스트 이름과 오류를 PR에 남긴다. 오른쪽 마우스 버튼·Esc·포커스 전환은 수동으로도 확인해야 한다.
+2026-10-31 Mac에서 Unity `6000.3.27f1`의 `-batchmode -nographics`로 실행했고 Motor 4개·Touch 12개 모두 통과했다. 이 결과는 화면 렌더링 없이 실행한 Editor 테스트다. 결과 XML과 실행 로그는 로컬 `MobileMMORPG/Builds/Validation/2026-10-31_224616_KST/`에 보관하며 [STATUS](STATUS.md)에 범위·한계를 기록했다. 실패하면 테스트 이름과 오류를 PR에 남긴다. 오른쪽 마우스 버튼·Esc·포커스 전환은 수동으로도 확인해야 한다.
+
+배치 실행은 `-runTests -testPlatform PlayMode -assemblyNames MobileMMORPG.Prototype.PlayModeTests`로 이 테스트 묶음만 지정하고 `-quit`는 함께 사용하지 않는다. Test Runner가 결과를 저장한 뒤 자체 종료한다. 실행 전 Unity를 닫고 기존 변경을 백업한다. Unity 실행으로 설정 파일이 다시 저장될 수 있으므로 실행 후 Git 변경을 확인한다. 이번 실행에서 다시 채워진 `ps4Passcode`는 값을 출력하지 않고 백업한 뒤 빈값으로 복원했다.
 
 ## 수동 검증
 
