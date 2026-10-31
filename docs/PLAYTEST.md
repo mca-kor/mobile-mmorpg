@@ -1,11 +1,11 @@
 # 첫 시제품 실행과 검증
 
-Unity 6.3 LTS `6000.3.27f1` 기준. 첫 Mac 시제품은 사용자에게 정상 작동을 보고받았다. 이번 모바일 확장 코드는 클라우드에서 작성했으며 Unity 컴파일·iOS 실행·빌드는 직접 검증하지 못했다. iPhone 단계는 [IPHONE](IPHONE.md)을 따른다.
+Unity 6.3 LTS `6000.3.27f1` 기준. Mac·iPhone 시제품은 사용자에게 정상 작동을 보고받았고 PR #6 병합을 확인했다. 2026-10-31 Mac 배치 실행에서 기존 PlayMode 테스트 16개가 모두 통과했다. 실제 화면·키보드·마우스와 iPhone 단계는 아래 수동 검증 및 [IPHONE](IPHONE.md)을 따른다.
 
-## 병합 전에 Mac에서 실행하기
+## Mac에서 실행하기
 
 1. Unity에서 Play 중이면 Play를 다시 눌러 멈춘다. 저장할 기존 변경이 있다면 저장·커밋하고 Unity를 닫는다.
-2. GitHub Desktop에서 Fetch origin을 누른다. Current Branch에서 `feature/iphone-touch-controls`를 선택한다. 로컬 변경 충돌 안내가 나오면 강제로 덮어쓰지 않는다.
+2. GitHub Desktop에서 Fetch origin을 누르고 Current Branch가 [STATUS](STATUS.md)의 작업 브랜치인지 확인한다. 로컬 설정 변경을 보존하기 전에는 다른 브랜치로 전환하지 않는다. PR #6의 코드는 이미 main에 포함되어 있다.
 3. Unity Hub의 Projects에서 기존 `MobileMMORPG`를 연다. 스크립트 컴파일이 끝날 때까지 기다린다.
 4. Unity의 Project 창에서 `Assets → Prototype → Scenes`를 열고 `ThirdPersonPrototype`을 더블 클릭한다. 기존 SampleScene은 변경하지 않는다.
 5. 이 씬은 Play 전에 바닥과 캐릭터가 보이지 않는 것이 정상이다. Hierarchy에는 Third Person Prototype이 있고, Play를 누르면 전용 스크립트가 맵·캐릭터·카메라를 만든다.
@@ -15,7 +15,7 @@ Unity 6.3 LTS `6000.3.27f1` 기준. 첫 Mac 시제품은 사용자에게 정상 
 9. Window → General → Console에서 빨간 오류가 없는지 확인한다. 오류가 있으면 첫 오류 전체를 복사해 알려준다.
 10. Play를 다시 눌러 종료한다. 실행 중 생성된 오브젝트가 사라지는 것은 정상이다.
 
-PR 검증을 위해 브랜치를 바꾼 것이므로 먼저 병합할 필요는 없다. 검증과 사용자 검토 후 GitHub에서 Merge pull request → Confirm merge를 진행하고, GitHub Desktop에서 main으로 전환한 뒤 Fetch origin → Pull origin으로 받는다.
+새 변경은 작업 브랜치에서 검증하고 별도 PR로 검토한다. 병합은 사용자가 진행한다. 로컬 변경을 커밋 등으로 보존한 뒤 main으로 전환하고 Fetch origin → Pull origin으로 받는다.
 
 ## 자동 테스트
 
@@ -26,7 +26,9 @@ Play를 종료한 뒤 Window → General → Test Runner를 연다. PlayMode 탭
 - 벽·바닥을 통과하지 않는지
 - 캐릭터가 이동할 때 카메라 거리와 회전이 유지되는지
 
-테스트 코드는 포함했지만 클라우드에서 실행하지 못했다. 실패하면 테스트 이름과 오류를 PR에 남긴다. 오른쪽 마우스 버튼·Esc·포커스 전환은 수동으로도 확인해야 한다.
+2026-10-31 Mac에서 Unity `6000.3.27f1`의 `-batchmode -nographics`로 실행했고 Motor 4개·Touch 12개 모두 통과했다. 이 결과는 화면 렌더링 없이 실행한 Editor 테스트다. 결과 XML과 실행 로그는 로컬 `MobileMMORPG/Builds/Validation/2026-10-31_224616_KST/`에 보관하며 [STATUS](STATUS.md)에 범위·한계를 기록했다. 실패하면 테스트 이름과 오류를 PR에 남긴다. 오른쪽 마우스 버튼·Esc·포커스 전환은 수동으로도 확인해야 한다.
+
+배치 실행은 `-runTests -testPlatform PlayMode -assemblyNames MobileMMORPG.Prototype.PlayModeTests`로 이 테스트 묶음만 지정하고 `-quit`는 함께 사용하지 않는다. Test Runner가 결과를 저장한 뒤 자체 종료한다. 실행 전 Unity를 닫고 기존 변경을 백업한다. Unity 실행으로 설정 파일이 다시 저장될 수 있으므로 실행 후 Git 변경을 확인한다. 이번 실행에서 다시 채워진 `ps4Passcode`는 값을 출력하지 않고 백업한 뒤 빈값으로 복원했다.
 
 ## 수동 검증
 
