@@ -2,7 +2,7 @@
 
 Unity 6.3 LTS `6000.3.27f1`, 프로젝트 `MobileMMORPG/` 기준. iPhone을 첫 모바일 테스트 기기로 사용한다. 메뉴·버튼은 원문 이름으로 표시한다.
 
-현재 상태 (2026-11-01): [PR #7](https://github.com/mca-kor/mobile-mmorpg/pull/7) 병합 커밋 `123e2eb` 기준 새 앱의 Unity·Xcode 빌드, 엄격한 서명 검증, iPhone 설치·실행이 성공했다. iPhone 15 Pro Max·iOS 27.2에서 새 앱 화면·기본 이동·시점이 정상이라는 사용자 보고도 받았다. 이전 Mac PlayMode 16개 통과와 빌드 전 기존 설치 앱의 3단계 검증 결과는 아래에서 구분한다. 사용자 진행 요청으로 `codex/ios-build-validation`의 결과 문서만 별도 PR로 제출하며 실제 반영 상태는 [STATUS](STATUS.md)를 따른다.
+현재 상태 (2026-11-01): [PR #7](https://github.com/mca-kor/mobile-mmorpg/pull/7) 병합 커밋 `123e2eb` 기준 새 앱의 Unity·Xcode 빌드, 엄격한 서명 검증, iPhone 설치·실행이 성공했다. iPhone 15 Pro Max·iOS 27.2에서 새 앱 화면·기본 이동·시점이 정상이라는 사용자 보고도 받았다. 이전 Mac PlayMode 16개 통과와 빌드 전 기존 설치 앱의 3단계 검증 결과는 아래에서 구분한다. 사용자 진행 요청으로 결과 문서 3개를 [PR #8](https://github.com/mca-kor/mobile-mmorpg/pull/8)로 제출했고 사용자 검토·병합 대기다. 실제 반영 상태는 [STATUS](STATUS.md)를 따른다.
 
 ## 이번에 확인한 설정
 
@@ -85,7 +85,7 @@ PR에 iPhone 모델, iOS·Xcode·Unity 버전, 성공·실패 항목과 첫 오�
 
 ## 6. GitHub에 반영
 
-PR #6은 2026-10-29 (한국 시간), 설정·검증 기록의 [PR #7](https://github.com/mca-kor/mobile-mmorpg/pull/7)은 2026-11-01 03:21:45 (한국 시간)에 병합됐다. 이후 최신 main 기준의 새 빌드를 `codex/ios-build-validation`에서 검증했고 사용자 요청으로 결과 문서 3개를 별도 커밋·PR로 제출한다. 실제 반영 상태는 [STATUS](STATUS.md)를 따른다. 이후 새 변경은 작업 브랜치에서 검토·커밋·푸시하고 Create Pull Request로 제출하며 병합은 사용자가 진행한다. 인증·서명은 사용자 기기에서만 관리한다.
+PR #6은 2026-10-29 (한국 시간), 설정·검증 기록의 [PR #7](https://github.com/mca-kor/mobile-mmorpg/pull/7)은 2026-11-01 03:21:45 (한국 시간)에 병합됐다. 이후 최신 main 기준의 새 빌드를 `codex/ios-build-validation`에서 검증하고 결과 문서 3개를 [PR #8](https://github.com/mca-kor/mobile-mmorpg/pull/8)로 제출했다. 로컬·원격 작업 브랜치는 같은 기록으로 맞췄으며 PR #8 병합은 진행하지 않았다. 실제 반영 상태는 [STATUS](STATUS.md)를 따른다. 이후 새 변경은 작업 브랜치에서 검토·커밋·푸시하고 Create Pull Request로 제출하며 병합은 사용자가 진행한다. 인증·서명은 사용자 기기에서만 관리한다.
 
 Prepare iPhone Build로 생긴 EditorBuildSettings·ProjectSettings 변경은 자동 푸시되지 않는다. 로컬 수정이 남아 브랜치 전환이 막히면 먼저 Changes를 확인하고 빌드 설정 변경을 별도 커밋·PR로 보관한다. 내용을 모른 채 Discard Changes를 누르지 않는다. Bundle Identifier는 공유 가능한 설정이지만 서명 키·인증서는 저장소에 넣지 않는다.
 
